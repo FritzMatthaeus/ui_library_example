@@ -15,6 +15,7 @@ import 'package:ui_library_example/src/components/buttons/text_buttons/text_dest
 import 'package:ui_library_example/src/foundation/my_theme.dart';
 import 'package:ui_library_example/src/foundation/themes/button_theme.dart';
 import 'package:ui_library_example/src/helpers/extensions.dart';
+import 'package:ui_library_example/test.dart';
 
 void main() {
   runApp(const ButtonDemoApp());
@@ -49,6 +50,15 @@ class _ButtonDemoAppState extends State<ButtonDemoApp> {
     return MaterialApp(
       title: 'UI Library Button Demo',
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: _isDarkMode ? Brightness.dark : Brightness.light,
+        ),
+        extensions: [_isDarkMode ? MyThemes.dark : MyThemes.light],
+        useMaterial3: true,
+      ),
+      // TODO impl & in eigene datei
+      darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blue,
           brightness: _isDarkMode ? Brightness.dark : Brightness.light,
@@ -100,6 +110,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Button.confirm(level: Level.primary),
             _buildSection(
               'Theme Information',
               Text(

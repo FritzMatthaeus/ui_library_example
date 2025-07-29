@@ -4,6 +4,9 @@ import 'package:ui_library_example/src/foundation/themes/button_theme.dart';
 import 'package:ui_library_example/src/foundation/themes/scaffold_theme.dart';
 
 extension MyThemeExtension on BuildContext {
+  // Muss man nicht alle verwenden
+  MyTheme get myTheme => Theme.of(this).extension<MyTheme>() ?? MyThemes.light;
+
   MyFilledButtonTheme get myFilledButtonTheme =>
       Theme.of(this).extension<MyTheme>()?.myFilledButtonTheme ??
       MyThemes.light.myFilledButtonTheme;
